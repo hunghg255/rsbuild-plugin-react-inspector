@@ -9,9 +9,9 @@
   <a href="https://www.npmjs.com/package/rsbuild-plugin-react-inspector/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/hunghg255/rsbuild-plugin-react-inspector" alt="License" /></a>
 </p>
 
-## Example
+## Playground
 
-[Example](https://hunghg255/rsbuild-plugin-react-inspector/playground)
+[Playground](https://github.com/hunghg255/rsbuild-plugin-react-inspector/tree/main/playground)
 
 ## 📖 Introduction
 
