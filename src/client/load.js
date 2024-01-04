@@ -34,7 +34,7 @@ const HTML = `<div data-react-inspector-ignore="true">
     href="https://github.com/hunghg255/rsbuild-plugin-react-inspector"
     target="_blank"
   >
-    <span>vite-plugin-reactjs-inspector</span>
+    <span>rsbuild-plugin-react-inspector</span>
     Click on a element › Open IDE › Link to File
   </a>
 </div>
