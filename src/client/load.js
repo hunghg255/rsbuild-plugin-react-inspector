@@ -31,7 +31,7 @@ const HTML = `<div data-react-inspector-ignore="true">
 
   <a
     class="react-inspector-banner"
-    href="https://github.com/hunghg255/vite-plugin-reactjs-inspector"
+    href="https://github.com/hunghg255/rsbuild-plugin-react-inspector"
     target="_blank"
   >
     <span>vite-plugin-reactjs-inspector</span>
