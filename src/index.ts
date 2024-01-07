@@ -3,13 +3,18 @@ import type { RsbuildPlugin } from '@rsbuild/core';
 import { resolvePackage } from '@rsbuild/shared';
 import { startServer } from './server/server';
 
-export const pluginReactInspector = (options?: { port: number }): RsbuildPlugin => {
+export const pluginReactInspector = (options?: {
+  port: number;
+}): RsbuildPlugin => {
   const port = options?.port || 3070;
 
   return {
     name: 'rsbuild-plugin-react-inspector',
     setup(api) {
-      if (api.context.bundlerType === 'webpack' || process.env.NODE_ENV !== 'development') {
+      if (
+        api.context.bundlerType === 'webpack' ||
+        process.env.NODE_ENV !== 'development'
+      ) {
         return;
       }
 
@@ -20,13 +25,13 @@ export const pluginReactInspector = (options?: { port: number }): RsbuildPlugin 
             ...tags,
             {
               tag: 'script',
-              "head": true,
+              head: true,
               attrs: {
                 type: 'module',
                 src: `http://localhost:${port}/virtual-react-inspector-path-load.js`,
               },
             },
-          ]
+          ],
         };
 
         return config;
@@ -41,7 +46,7 @@ export const pluginReactInspector = (options?: { port: number }): RsbuildPlugin 
           .rule(utils.CHAIN_ID.RULE.TS)
           .test(/\.(tsx|jsx)$/i)
           .use(utils.CHAIN_ID.RULE.TS)
-          .loader(resolvePackage('./core/applyInspector.js', __dirname))
+          .loader(resolvePackage('./core/applyInspector.mjs', __dirname))
           .end();
       });
     },
