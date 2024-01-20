@@ -1,6 +1,6 @@
 import type { RsbuildPlugin } from '@rsbuild/core';
 
-import { resolvePackage } from '@rsbuild/shared';
+import { resolvePackage, setConfig } from '@rsbuild/shared';
 import { startServer } from './server/server';
 
 export const pluginReactInspector = (options?: {
@@ -20,21 +20,18 @@ export const pluginReactInspector = (options?: {
 
       api.modifyRsbuildConfig((config) => {
         const tags: any = config?.html?.tags || [];
-        config.html = {
-          tags: [
-            ...tags,
-            {
-              tag: 'script',
-              head: true,
-              attrs: {
-                type: 'module',
-                src: `http://localhost:${port}/virtual-react-inspector-path-load.js`,
-              },
-            },
-          ],
-        };
 
-        return config;
+        setConfig(config, 'html.tags', [
+          ...tags,
+          {
+            tag: 'script',
+            head: true,
+            attrs: {
+              type: 'module',
+              src: `http://localhost:${port}/virtual-react-inspector-path-load.js`,
+            },
+          },
+        ]);
       });
 
       api.onAfterStartDevServer(() => {
