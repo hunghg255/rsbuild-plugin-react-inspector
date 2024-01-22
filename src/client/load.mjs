@@ -2,14 +2,16 @@ const CONTAINER_ID = 'react-inspector-container'
 const inspectorOptions = {};
 const KEY_DATA = 'data-react-inspector'
 const KEY_IGNORE = 'data-react-inspector-ignore';
+const POSITION_DATA = 'data-react-inspector-position'
 const PATH_ROOT = '__PATH_ROOT_VALUE__';
 
 const color = {
   disabled: '#E2C6C6',
   active: '#42b883',
-}
+};
 
-const STYLES = '.react-inspector-container{cursor:pointer;position:fixed;text-align:center;z-index:2147483647;font-family:Arial,Helvetica,sans-serif;top:15px;right:15px}.react-inspector-banner{display:none;position:absolute;margin:0;padding:5px;width:260px;border-radius:3px;font-weight:500;font-size:11px;color:#e9e9e9;background-color:#42b883;text-decoration:none;top:100%;right:0}.react-inspector-banner span{display:block;font-size:12px;color:#213547;font-weight:700}.react-inspector-container:hover .react-inspector-banner{display:block}.react-inspector-container--disabled:hover .react-inspector-banner{display:none}.react-inspector-overlay{z-index:2147483647;position:fixed;padding:5px 8px;border-radius:4px;text-align:left;color:#e9e9e9;background-color:#42b883;transform:translateX(-50%);left:50%;transition:all .1s ease-in;pointer-events:none;font-family:Arial,Helvetica,sans-serif;box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1)}.react-inspector-overlay .react-inspector-tip{font-size:11px;opacity:.7}.react-inspector-size-indicator{z-index:2147483646;position:fixed;background-color:#42b88325;border:1px solid #42b88350;border-radius:5px;transition:all .1s ease-in;pointer-events:none}';
+const getStyles = (position) =>
+  `.react-inspector-container{height:20px;width:100px;cursor:pointer;position:fixed;text-align:center;z-index:2147483647;font-family:Arial,Helvetica,sans-serif;top:${position.top};left:${position.left};bottom:${position.bottom};right:${position.right}}.react-inspector-banner{display:none;position:absolute;margin:0;padding:5px;width:260px;border-radius:3px;font-weight:500;font-size:11px;color:#e9e9e9;background-color:#42b883;text-decoration:none;top:100%;right:0}.react-inspector-banner span{display:block;font-size:12px;color:#213547;font-weight:700}.react-inspector-container:hover .react-inspector-banner{display:block}.react-inspector-container--disabled:hover .react-inspector-banner{display:none}.react-inspector-overlay{z-index:2147483647;position:fixed;padding:5px 8px;border-radius:4px;text-align:left;color:#e9e9e9;background-color:#42b883;transform:translateX(-50%);left:50%;transition:all .1s ease-in;pointer-events:none;font-family:Arial,Helvetica,sans-serif;box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1)}.react-inspector-overlay .react-inspector-tip{font-size:11px;opacity:.7}.react-inspector-size-indicator{z-index:2147483646;position:fixed;background-color:#42b88325;border:1px solid #42b88350;border-radius:5px;transition:all .1s ease-in;pointer-events:none}`;
 
 const HTML = `<div data-react-inspector-ignore="true">
 <div
@@ -69,6 +71,21 @@ function getData(el) {
   return el?.attributes?.getNamedItem?.(KEY_DATA)?.value ?? el?.getAttribute?.(KEY_DATA)
 }
 
+function convertStringToObject(str) {
+  const obj = {};
+  str.match(/(\w+):\s*([^;]+)/g).forEach(part => {
+    const [key, value] = part.split(':');
+    obj[key.trim()] = value.trim();
+  });
+  return obj;
+}
+
+function getElementPosition() {
+  const scriptTag = document.currentScript || document.querySelector('script[src*="virtual-react-inspector-path-load.js"]');
+  const elementPositionData = scriptTag.getAttribute(POSITION_DATA);
+  return convertStringToObject(elementPositionData)
+}
+
 const getTargetNode = (e) => {
   const splitRE = /(.+):([\d]+):([\d]+)$/
   const path = e.path ?? e.composedPath()
@@ -120,9 +137,9 @@ function load() {
   createInspectorContainer()
 
   const domContainer = document.querySelector(`#${CONTAINER_ID}`);
-
   const style = document.createElement('style')
-  style.innerHTML = STYLES;
+  const elPosition = getElementPosition()
+  style.innerHTML = getStyles(elPosition)
   document.head.appendChild(style)
 
   if (!domContainer) return;

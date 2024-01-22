@@ -5,9 +5,20 @@ import { startServer } from './server/server';
 
 export const pluginReactInspector = (options?: {
   port: number;
+  position: {
+    left?: string;
+    right?: string;
+    bottom?: string;
+    top?: string;
+  };
 }): RsbuildPlugin => {
   const port = options?.port || 3070;
-
+  const position = {
+    left: options?.position?.left || 'auto',
+    right: options?.position?.right || '15px',
+    bottom: options?.position?.bottom || 'auto',
+    top: options?.position?.top || '15px',
+  };
   return {
     name: 'rsbuild-plugin-react-inspector',
     setup(api) {
@@ -29,6 +40,7 @@ export const pluginReactInspector = (options?: {
             attrs: {
               type: 'module',
               src: `http://localhost:${port}/virtual-react-inspector-path-load.js`,
+              'data-react-inspector-position': `{left: ${position.left}; right: ${position.right}; top: ${position.top};bottom: ${position.bottom};}`,
             },
           },
         ]);
