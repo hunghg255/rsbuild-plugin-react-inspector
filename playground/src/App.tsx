@@ -1,7 +1,10 @@
+import { getAuthLocalStorage } from '@/type';
 import { useEffect, useState } from 'react';
+import Hello from './Hello';
 
 const HelloWorld = () => {
   const [count, setCount] = useState(0);
+  console.log(getAuthLocalStorage());
 
   useEffect(() => {
     console.log('HelloWorld mounted');
@@ -22,6 +25,8 @@ const HelloWorld = () => {
           Edit <code>App.tsx</code> to test HMR
         </p>
       </div>
+
+      <Hello />
     </div>
   );
 };

@@ -20,6 +20,10 @@ export default function (content) {
   const projectDir = path.join(process.cwd());
   const fileName = id.replace(projectDir.replace(/\\/g, '/'), '');
 
+  const ext = path.extname(id);
+
+  if (ext === '.ts') return content;
+
   const ast = parseSync(content, {
     configFile: false,
     filename: id,

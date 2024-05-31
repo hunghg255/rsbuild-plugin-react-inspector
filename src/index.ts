@@ -2,9 +2,9 @@ import type { RsbuildPlugin } from '@rsbuild/core';
 
 import { resolvePackage, setConfig } from '@rsbuild/shared';
 import { startServer } from './server/server';
+import { getRandomPort } from 'get-port-please';
 
 export const pluginReactInspector = (options?: {
-  port: number;
   position: {
     left?: string;
     right?: string;
@@ -12,13 +12,15 @@ export const pluginReactInspector = (options?: {
     top?: string;
   };
 }): RsbuildPlugin => {
-  const port = options?.port || 4567;
+  let port = 4567;
+
   const position = {
     left: options?.position?.left || 'auto',
     right: options?.position?.right || '15px',
     bottom: options?.position?.bottom || 'auto',
     top: options?.position?.top || '15px',
   };
+
   return {
     name: 'rsbuild-plugin-react-inspector',
     setup(api) {
@@ -29,8 +31,9 @@ export const pluginReactInspector = (options?: {
         return;
       }
 
-      api.modifyRsbuildConfig((config) => {
+      api.modifyRsbuildConfig(async (config) => {
         const tags: any = config?.html?.tags || [];
+        port = await getRandomPort();
 
         setConfig(config, 'html.tags', [
           ...tags,
@@ -53,7 +56,7 @@ export const pluginReactInspector = (options?: {
       api.modifyBundlerChain(async (chain, utils) => {
         chain.module
           .rule(utils.CHAIN_ID.RULE.JS)
-          .test(/\.(tsx|jsx)$/i)
+          .test(/\.(j|t)sx?$/)
           .use(utils.CHAIN_ID.USE.TS)
           .loader(resolvePackage('./core/applyInspector.mjs', __dirname))
           .end();
