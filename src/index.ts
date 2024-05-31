@@ -12,8 +12,6 @@ export const pluginReactInspector = (options?: {
     top?: string;
   };
 }): RsbuildPlugin => {
-  let port = 4567;
-
   const position = {
     left: options?.position?.left || 'auto',
     right: options?.position?.right || '15px',
@@ -23,7 +21,7 @@ export const pluginReactInspector = (options?: {
 
   return {
     name: 'rsbuild-plugin-react-inspector',
-    setup(api) {
+    async setup(api) {
       if (
         api.context.bundlerType === 'webpack' ||
         process.env.NODE_ENV !== 'development'
@@ -31,9 +29,10 @@ export const pluginReactInspector = (options?: {
         return;
       }
 
+      const port = await getRandomPort();
+
       api.modifyRsbuildConfig(async (config) => {
         const tags: any = config?.html?.tags || [];
-        port = await getRandomPort();
 
         setConfig(config, 'html.tags', [
           ...tags,
