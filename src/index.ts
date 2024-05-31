@@ -12,7 +12,7 @@ export const pluginReactInspector = (options?: {
     top?: string;
   };
 }): RsbuildPlugin => {
-  const port = options?.port || 3070;
+  const port = options?.port || 4567;
   const position = {
     left: options?.position?.left || 'auto',
     right: options?.position?.right || '15px',
@@ -52,9 +52,9 @@ export const pluginReactInspector = (options?: {
 
       api.modifyBundlerChain(async (chain, utils) => {
         chain.module
-          .rule(utils.CHAIN_ID.RULE.TS)
+          .rule(utils.CHAIN_ID.RULE.JS)
           .test(/\.(tsx|jsx)$/i)
-          .use(utils.CHAIN_ID.RULE.TS)
+          .use(utils.CHAIN_ID.USE.TS)
           .loader(resolvePackage('./core/applyInspector.mjs', __dirname))
           .end();
       });

@@ -38,6 +38,7 @@ export default function (content) {
 
         const { start } = node;
         const { column, line } = node?.loc?.start;
+
         const toInsertPosition =
           start + parseJSXIdentifier(node.openingElement.name).length + 1;
         const content = ` data-react-inspector="${fileName.slice(

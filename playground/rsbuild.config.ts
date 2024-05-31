@@ -1,6 +1,6 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
-import launchEditorMiddleware from 'launch-editor-middleware';
+import { pluginConsoleDebug } from 'rsbuild-plugin-console-debug';
 
 import { pluginReactInspector } from '../src';
 
@@ -19,5 +19,5 @@ export default defineConfig({
   //     },
   //   ],
   // },
-  plugins: [pluginReact(), pluginReactInspector()],
+  plugins: [pluginReact(), pluginReactInspector(), pluginConsoleDebug()],
 });
