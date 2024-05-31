@@ -37,15 +37,15 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@rsbuild/core": "^0.2.15",
-    "@types/node": "^20.10.6",
-    "bumpp": "^9.2.1",
-    "eslint": "^8.56.0",
+    "@rsbuild/core": "^0.7.1",
+    "@types/node": "^20.12.13",
+    "bumpp": "^9.4.1",
+    "eslint": "^8.57.0",
     "eslint-config-relaxed-ts": "^2.0.34",
     "esno": "^0.17.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "tsup": "^7.3.0",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.5",
     "vitest": "^0.34.6"
   },
   "engines": {
@@ -53,15 +53,15 @@
     "@rsbuild/core": ">=0.2.13"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.23.7",
-    "@babel/preset-react": "^7.23.3",
-    "@babel/preset-typescript": "^7.23.3",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
     "@nozomuikuta/h3-cors": "^0.2.2",
     "@rsbuild/shared": "^0.0.17",
-    "h3": "^1.9.0",
+    "h3": "^1.11.1",
     "launch-editor-middleware": "^2.6.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "repository": {
     "type": "git",
