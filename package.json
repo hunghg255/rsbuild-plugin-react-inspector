@@ -1,6 +1,6 @@
 {
   "name": "rsbuild-plugin-react-inspector",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "description": "📦 📦 rsbuild plugin react inspector",
   "scripts": {
     "build": "tsup && cp -r ./src/core ./dist && cp -r ./src/client ./dist",
