@@ -1,6 +1,5 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
-import { pluginConsoleDebug } from 'rsbuild-plugin-console-debug';
 
 import { pluginReactInspector } from '../src';
 
@@ -19,5 +18,5 @@ export default defineConfig({
   //     },
   //   ],
   // },
-  plugins: [pluginReact(), pluginReactInspector(), pluginConsoleDebug()],
+  plugins: [pluginReact(), pluginReactInspector()],
 });

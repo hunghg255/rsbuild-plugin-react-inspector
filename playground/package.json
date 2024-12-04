@@ -12,10 +12,12 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@rsbuild/core": "^0.7.1",
-    "@rsbuild/plugin-react": "^0.7.1",
+    "@babel/core": "^7.26.0",
+    "@rsbuild/core": "^1.1.8",
+    "@rsbuild/plugin-react": "^1.0.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "magic-string": "^0.30.14",
     "rsbuild-plugin-console-debug": "^0.0.9",
     "rsbuild-plugin-react-inspector": "^0.0.7",
     "typescript": "^5.4.5"

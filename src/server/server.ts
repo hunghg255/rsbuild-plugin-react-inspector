@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable default-param-last */
 import { createServer } from 'node:http';
 import { resolve, join } from 'node:path';
 import { cwd } from 'node:process';
@@ -32,11 +34,9 @@ export async function startServer(port: number = 4567, rootPath) {
     );
     app.use(
       '/health',
-      eventHandler(() => {
-        return {
-          message: 'ok',
-        };
-      }),
+      eventHandler(() => ({
+        message: 'ok',
+      })),
     );
 
     app.use(

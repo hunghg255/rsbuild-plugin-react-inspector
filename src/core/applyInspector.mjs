@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable no-invalid-this */
+/* eslint-disable no-unsafe-optional-chaining */
 // const { parseSync, traverse } = require('@babel/core');
 // const path = require('path');
 // const { default: MagicString } = require('magic-string');
@@ -7,13 +10,12 @@ import MagicString from 'magic-string';
 
 function parseJSXIdentifier(name) {
   if (name.type === 'JSXIdentifier') return name.name;
-  else
-    return `${parseJSXIdentifier(name.object)}.${parseJSXIdentifier(
-      name.property,
-    )}`;
+  return `${parseJSXIdentifier(name.object)}.${parseJSXIdentifier(
+    name.property,
+  )}`;
 }
 
-export default function (content) {
+export default function Inpsector(content) {
   const s = new MagicString(content);
 
   const id = this.resourcePath;
