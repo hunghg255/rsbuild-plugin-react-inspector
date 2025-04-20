@@ -15,9 +15,6 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@babel/core':
-        specifier: ^7.26.0
-        version: 7.26.0
       '@rsbuild/core':
         specifier: ^1.1.8
         version: 1.1.8
@@ -30,15 +27,12 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.1
-      magic-string:
-        specifier: ^0.30.14
-        version: 0.30.14
       rsbuild-plugin-console-debug:
         specifier: ^0.0.9
         version: 0.0.9(@babel/core@7.26.0)
       rsbuild-plugin-react-inspector:
-        specifier: ^0.0.7
-        version: 0.0.7(@babel/core@7.26.0)(defu@6.1.4)
+        specifier: ^0.1.0
+        version: 0.1.0(defu@6.1.4)
       typescript:
         specifier: ^5.4.5
         version: 5.7.2
@@ -1266,9 +1260,6 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  magic-string@0.30.14:
-    resolution: {integrity: sha512-5c99P1WKTed11ZC0HMJOj6CDIue6F8ySu+bJL+85q1zBEIY8IklrJ1eiKC2NDRh3Ct3FcvmJPyQHb9erXMTJNw==}
-
   merge-deep@3.0.3:
     resolution: {integrity: sha512-qtmzAS6t6grwEkNrunqTBdn0qKwFgNWvlxUbAV8es9M7Ot1EbyApytCnvE0jALPa46ZpKDUo527kKiaWplmlFA==}
     engines: {node: '>=0.10.0'}
@@ -1448,8 +1439,8 @@ packages:
     resolution: {integrity: sha512-nNsA7kRpScz9+B1q/WAs2opNXbP6ubYMHPtaXs9OjGVTbVptgWW2jeiddVGhLDWZyFyUvBd692ezgTxF56WdkA==}
     engines: {'@rsbuild/core': '>=0.2.13', node: '>=14'}
 
-  rsbuild-plugin-react-inspector@0.0.7:
-    resolution: {integrity: sha512-taZWQi9bEsJar/YTxjJjqUyT5QJT+k7XIut3Vm1t406xOs7GlRLqvHnBag4U/t8TEdpUhhYbumIj8pMTsjIpcA==}
+  rsbuild-plugin-react-inspector@0.1.0:
+    resolution: {integrity: sha512-26Eifj9p6URdSlezES4VcQuFf1AJ2CTotddjr7/lGshGkCmlgCjwujR0wfxptmMm/MdSwLYI2vf5Lsd9V6I2Gg==}
     engines: {'@rsbuild/core': '>=0.2.13', node: '>=14'}
 
   rslog@1.2.3:
@@ -3026,10 +3017,6 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  magic-string@0.30.14:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.0
-
   merge-deep@3.0.3:
     dependencies:
       arr-union: 3.1.0
@@ -3201,19 +3188,16 @@ snapshots:
       - tsconfig-paths
       - utf-8-validate
 
-  rsbuild-plugin-react-inspector@0.0.7(@babel/core@7.26.0)(defu@6.1.4):
+  rsbuild-plugin-react-inspector@0.1.0(defu@6.1.4):
     dependencies:
-      '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
-      '@babel/preset-react': 7.26.3(@babel/core@7.26.0)
-      '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
       '@nozomuikuta/h3-cors': 0.2.2(defu@6.1.4)(h3@1.13.0)
       '@rsbuild/shared': 0.0.17
+      get-port-please: 3.1.2
       h3: 1.13.0
-      launch-editor-middleware: 2.9.1
+      launch-editor: 2.9.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
-      - '@babel/core'
       - '@types/express'
       - bufferutil
       - debug

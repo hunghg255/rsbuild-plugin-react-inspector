@@ -1,7 +1,7 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 
-import { pluginReactInspector } from '../src';
+import { pluginReactInspector } from 'rsbuild-plugin-react-inspector';
 
 export default defineConfig({
   // dev: {
